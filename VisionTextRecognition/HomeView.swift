@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var scannedImage: UIImage?
     @State private var scanResults: [String]?
     @State private var isShowingScanner = false
+    @State private var isShowingProgressView = false
     
     var body: some View {
         VStack {
@@ -26,8 +27,13 @@ struct HomeView: View {
             
             Button {
                 isShowingScanner = true
+                isShowingProgressView = true
             } label: {
-                Label("Scan Image", systemImage: "camera.viewfinder")
+                if isShowingProgressView {
+                    ProgressView()
+                } else {
+                    Label("Scan Image", systemImage: "camera.viewfinder")
+                }
             }
             .buttonStyle(.bordered)
             .tint(.accentColor)
@@ -64,19 +70,24 @@ extension HomeView {
         // Create a new request to recognize text.
         let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
         
+        isShowingProgressView = true
+        
         do {
             // Perform the text-recognition request.
             try requestHandler.perform([request])
         } catch {
             print("Unable to perform the requests: \(error).")
+            isShowingProgressView = false
         }
     }
     
     private func recognizeTextHandler(request: VNRequest, error: Error?) {
         guard let observations =
                 request.results as? [VNRecognizedTextObservation] else {
+            isShowingProgressView = false
             return
         }
+        
         let recognizedStrings = observations.compactMap { observation in
             // Return the string of the top VNRecognizedText instance.
             return observation.topCandidates(1).first?.string
@@ -88,5 +99,6 @@ extension HomeView {
     private func processResults(_ results: [String]) {
         print(results)
         scanResults = results
+        isShowingProgressView = false
     }
 }
