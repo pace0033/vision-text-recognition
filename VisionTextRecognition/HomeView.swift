@@ -10,16 +10,24 @@ import Vision
 
 struct HomeView: View {
     @State private var scannedImage: UIImage?
+    @State private var scanResults: [String]?
     @State private var isShowingScanner = false
     
     var body: some View {
         VStack {
-            
+            if let results = scanResults {
+                List {
+                    ForEach(results, id: \.self) { result in
+                        Text(result)
+                    }
+                }
+                .listStyle(.plain)
+            }
             
             Button {
                 isShowingScanner = true
             } label: {
-                Label("Scan Image", systemImage: "camera.fill")
+                Label("Scan Image", systemImage: "camera.viewfinder")
             }
             .buttonStyle(.bordered)
             .tint(.accentColor)
@@ -52,10 +60,10 @@ extension HomeView {
         
         // Create a new image-request handler.
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
-
+        
         // Create a new request to recognize text.
         let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
-
+        
         do {
             // Perform the text-recognition request.
             try requestHandler.perform([request])
@@ -74,6 +82,11 @@ extension HomeView {
             return observation.topCandidates(1).first?.string
         }
         
-        print(recognizedStrings)
+        processResults(recognizedStrings)
+    }
+    
+    private func processResults(_ results: [String]) {
+        print(results)
+        scanResults = results
     }
 }
