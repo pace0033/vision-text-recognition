@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07E240D729E4C868001458E3 /* VisionTextRecognitionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E240D629E4C868001458E3 /* VisionTextRecognitionApp.swift */; };
-		07E240D929E4C868001458E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E240D829E4C868001458E3 /* ContentView.swift */; };
+		07E240D929E4C868001458E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E240D829E4C868001458E3 /* HomeView.swift */; };
 		07E240DB29E4C86A001458E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E240DA29E4C86A001458E3 /* Assets.xcassets */; };
 		07E240DE29E4C86A001458E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E240DD29E4C86A001458E3 /* Preview Assets.xcassets */; };
 		07E240E629E4C9F2001458E3 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E240E529E4C9F2001458E3 /* ScannerView.swift */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		07E240D329E4C868001458E3 /* VisionTextRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTextRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E240D629E4C868001458E3 /* VisionTextRecognitionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTextRecognitionApp.swift; sourceTree = "<group>"; };
-		07E240D829E4C868001458E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		07E240D829E4C868001458E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		07E240DA29E4C86A001458E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07E240DD29E4C86A001458E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07E240E529E4C9F2001458E3 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
@@ -53,9 +53,9 @@
 		07E240D529E4C868001458E3 /* VisionTextRecognition */ = {
 			isa = PBXGroup;
 			children = (
-				07E240E429E4C9DE001458E3 /* Views */,
+				07E240E529E4C9F2001458E3 /* ScannerView.swift */,
+				07E240D829E4C868001458E3 /* HomeView.swift */,
 				07E240D629E4C868001458E3 /* VisionTextRecognitionApp.swift */,
-				07E240D829E4C868001458E3 /* ContentView.swift */,
 				07E240DA29E4C86A001458E3 /* Assets.xcassets */,
 				07E240DC29E4C86A001458E3 /* Preview Content */,
 			);
@@ -68,14 +68,6 @@
 				07E240DD29E4C86A001458E3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		07E240E429E4C9DE001458E3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				07E240E529E4C9F2001458E3 /* ScannerView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07E240E629E4C9F2001458E3 /* ScannerView.swift in Sources */,
-				07E240D929E4C868001458E3 /* ContentView.swift in Sources */,
+				07E240D929E4C868001458E3 /* HomeView.swift in Sources */,
 				07E240D729E4C868001458E3 /* VisionTextRecognitionApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +274,7 @@
 				DEVELOPMENT_TEAM = 64H6U72Q6B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires access to the camera to extract text from images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -311,6 +304,7 @@
 				DEVELOPMENT_TEAM = 64H6U72Q6B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires access to the camera to extract text from images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
