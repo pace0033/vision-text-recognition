@@ -16,11 +16,9 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            if let results = scanResults {
-                List {
-                    ForEach(results, id: \.self) { result in
-                        Text(result)
-                    }
+            if let scanResults {
+                List(scanResults, id: \.self) { result in
+                    Text(result)
                 }
                 .listStyle(.plain)
             }
@@ -38,7 +36,8 @@ struct HomeView: View {
             .buttonStyle(.bordered)
             .tint(.accentColor)
             .controlSize(.large)
-            .padding()
+            .font(.title3)
+            .padding(.top)
         }
         .fullScreenCover(isPresented: $isShowingScanner) {
             ScannerView(scannedImage: $scannedImage)
