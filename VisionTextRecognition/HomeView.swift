@@ -69,6 +69,34 @@ extension HomeView {
         // Create a new request to recognize text.
         let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
         
+        // MARK: CUSTOMIZATION OPTIONS
+        // Recognition Level (Fast or Accurate)
+         request.recognitionLevel = .fast
+        
+        // Minimum Text Height
+        // The minimum height, relative to the image height, of the text to recognize.
+        request.minimumTextHeight = 0.5
+        
+        // Language detection toggle
+        request.automaticallyDetectsLanguage = false
+        
+        // Specify languages to recognize
+        request.recognitionLanguages = ["en-US", "fr-FR"]
+        
+        // Get supported languages for the request
+        do {
+            try request.supportedRecognitionLanguages()
+        } catch {
+            print("Supported languages not found.")
+        }
+        
+        // Toggle Language Correction
+        request.usesLanguageCorrection = false
+        
+        // Custom Words
+        // Words to supplement the recognized languages at the word-recognition stage
+        request.customWords = ["supercalifragilisticexpialidocious"]
+        
         isShowingProgressView = true
         
         do {
